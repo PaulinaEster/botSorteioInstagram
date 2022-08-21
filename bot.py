@@ -167,3 +167,4 @@ class InstagramBot:
 # Entre com o usuário e senha aqui
 botSorteio = InstagramBot("user", "pass")
 botSorteio.login()
+ 
