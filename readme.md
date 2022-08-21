@@ -5,6 +5,7 @@
   - um metodo `pega_numero_seguidores` que vai até o seu perfil e pega a informação de quantos perfis te seguem
   - um metodo `pega_seguidores` que usa o metodo `pega_numero_seguidores` e para pegar todos seus seguidores do instagram e coloca em um arquivo `"users.txt"` (para ser usado as outras vezes que você rodar o bot)
   - um metodo `comente_nas_fotos_com_a_hashtag` que usa os dois metodos de cima para fazer uma lista de seguidores e depois gerar comentarios (se os comentarios precisarem ser perfis alheios)
+  - um metodo `curtir_publicacoes` que depois de alguns comentarios vai para o seu feed e curte aleatoriamente publicações
 
 ## como começar:
   Coloque seu perfil e sua senha no final do código, esses dados vão ser usados para:

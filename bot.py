@@ -80,6 +80,22 @@ class InstagramBot:
         print("usuarios retirados com sucesso")
         return users
 
+    def curtir_publicacoes(self):
+        driver = self.driver
+        print("BOT VAI COMEÇAR A CURTIR")
+        time.sleep(random.randint(2, 5))
+        publicacoes = driver.find_elements(By.TAG_NAME, "article")
+        time.sleep(random.randint(2, 5))
+        if( len(publicacoes) > 1 ):
+            for i in range(random.randint(10, 30)):
+                escolheCurtir = publicacoes[random.randint(0,len(publicacoes)-1)]
+                time.sleep(random.randint(2, 5))
+                curtida = escolheCurtir.find_element(By.CSS_SELECTOR, "._aamw")
+                time.sleep(random.randint(2, 5))
+                curtida.click() 
+                time.sleep(random.randint(2, 5))
+        time.sleep(random.randint(2, 4))
+
     def comente_nas_fotos_com_a_hashtag(self):
         driver = self.driver  
         a = 0
@@ -99,27 +115,28 @@ class InstagramBot:
         form = driver.find_element(By.CSS_SELECTOR,'._aao9')
         time.sleep(1)
         
-        # selecionar a caica input comentar
-        # comment_input_box = form.find_element(By.CSS_SELECTOR,'._aaoc')
-        # time.sleep(1)
-
+        n = 0
         while (len(comments) >= 2):  #fazer bot rodar até comentar todos os seguidores, retirar seguidor da lista quando escolhido pro sorteio
             
-            if(a == 6):
+            if(a >= random.randint(6, 12)):
+                n = n + a
+                print("VEZES COMENTADAS: ", n)
                 a = 0
+                
                 driver.get("https://www.instagram.com")
-                time.sleep(1)
-                for i in range(random.randint(20, 60)):
-                    driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-                    time.sleep(random.randint(2, 5))
+                time.sleep(3)
+                if(n % 2 != 0 ):
+                    for i in range(random.randint(20, 60)):
+                        driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+                        time.sleep(random.randint(2, 5))
+                else:  
+                    self.curtir_publicacoes()
                 driver.get(sorteio_da_vez)   #vai pro link do sorteio
                 time.sleep(3) 
                 
                 # pega o formulario que tem a caixa para comentar
                 form = driver.find_element(By.CSS_SELECTOR,'._aao9')
-                time.sleep(1)
-            
-            
+                time.sleep(2)
             
             time.sleep(1)
             driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
@@ -128,6 +145,7 @@ class InstagramBot:
             try: 
                 
                 comment_input_box = form.find_element(By.CSS_SELECTOR,'._aaoc') # selecionar a caica input comentar
+                time.sleep(2)
                 comment_input_box.clear() # limpa a caixa input
                 time.sleep(1)
                 
@@ -156,8 +174,7 @@ class InstagramBot:
                 form.find_element(By.CSS_SELECTOR, '._acan').click()
                 time.sleep(2)
                 
-                a = a + 1 
-                print('Vezes comentadas:', a)      
+                a = a + 1     
                 time.sleep(random.randint(20, 40)) #espera 30 segundos pra comentar outra vez
             except Exception as e:
                 print(e)
