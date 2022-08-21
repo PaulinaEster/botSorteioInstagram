@@ -109,9 +109,9 @@ class InstagramBot:
                 a = 0
                 driver.get("https://www.instagram.com")
                 time.sleep(1)
-                for i in range(60):
+                for i in range(random.randint(20, 60)):
                     driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-                    time.sleep(2)
+                    time.sleep(random.randint(2, 5))
                 driver.get(sorteio_da_vez)   #vai pro link do sorteio
                 time.sleep(3) 
                 
@@ -119,10 +119,7 @@ class InstagramBot:
                 form = driver.find_element(By.CSS_SELECTOR,'._aao9')
                 time.sleep(1)
             
-            # if(driver.find_element(By.CSS_SELECTOR,'._a9_1')):
-            #     desviarRelatarProblema =  driver.find_element(By.CSS_SELECTOR,'._a9_1')
-            #     time.sleep(2)
-            #     desviarRelatarProblema.click()
+            
             
             time.sleep(1)
             driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
@@ -138,9 +135,9 @@ class InstagramBot:
                 pessoa_1 = random.choice(comments)    #escolhe uma pessoa aleatoria do seu perfil
                 pessoa_2 = random.choice(comments)    #escolhe uma pessoa aleatoria do seu perfil
                 pessoa_3 = random.choice(comments)    #escolhe uma pessoa aleatoria do seu perfil
-                comments.remove(pessoa_1);
-                comments.remove(pessoa_2);
-                comments.remove(pessoa_3);
+                comments.remove(pessoa_1);            # remove a pessoa que ja foi escolhida (se n pode repetir pessoas)
+                comments.remove(pessoa_2);            # remove a pessoa que ja foi escolhida (se n pode repetir pessoas)
+                comments.remove(pessoa_3);            # remove a pessoa que ja foi escolhida (se n pode repetir pessoas)
                 marcar_3_pessoas = pessoa_1 + " " + pessoa_2 + " " + pessoa_3 + " " # texto caso tenham 2 pessoas pra marcar
                 marcar_1_pessoas = pessoa_1 + " "  # texto caso tenha 1 pessoa pra marcar
 
@@ -161,7 +158,7 @@ class InstagramBot:
                 
                 a = a + 1 
                 print('Vezes comentadas:', a)      
-                time.sleep(25) #espera 30 segundos pra comentar outra vez
+                time.sleep(random.randint(20, 40)) #espera 30 segundos pra comentar outra vez
             except Exception as e:
                 print(e)
                 time.sleep(5)
