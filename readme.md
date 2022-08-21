@@ -9,7 +9,7 @@
 ## como começar:
   Coloque seu perfil e sua senha no final do código, esses dados vão ser usados para:
   - fazer o login no seu perfil;
-  - pegar as informações de quantos seguidores você tem
+  - pegar as informações de quantos seguidores você tem SE VOCÊ TIVER MENOS QUE 1000 SEGUIDORES `PRECISA COMENTAR A LINHA 47` E TROCAR A 48 POR: `numero = int(output[0])`
   - pegar `quase todos` os seus seguidores
 
 ### `como colocar outro link de sorteio`:

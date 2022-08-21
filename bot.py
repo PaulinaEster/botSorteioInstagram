@@ -30,8 +30,8 @@ class InstagramBot:
         time.sleep(3)
         password_element.send_keys(Keys.RETURN)
         time.sleep(5)
-        agora_nao = driver.find_element(By.CLASS_NAME,"cmbtv")
-        time.sleep(2)
+        agora_nao = driver.find_element(By.CSS_SELECTOR ,".cmbtv")
+        time.sleep(3)
         agora_nao.click()
         time.sleep(1)
         self.comente_nas_fotos_com_a_hashtag()
@@ -165,6 +165,6 @@ class InstagramBot:
     
 
 # Entre com o usuário e senha aqui
-botSorteio = InstagramBot("user", "pass")
+botSorteio = InstagramBot("USER", "PASS")
 botSorteio.login()
  
